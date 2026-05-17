@@ -1,0 +1,11 @@
+{
+  "name": "screenwall-security-monitor",
+  "private": true,
+  "version": "0.1.0",
+  "description": "ScreenWall Security Monitor scaffold",
+  "scripts": {
+    "setup": "bash scripts/setup.sh",
+    "seed": "bash scripts/seed-demo-data.sh",
+    "dev": "bash scripts/run-local.sh"
+  }
+}
