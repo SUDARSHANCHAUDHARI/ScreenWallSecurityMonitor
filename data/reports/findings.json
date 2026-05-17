@@ -1,0 +1,71 @@
+[
+  {
+    "evidence": {
+      "url": "https://signage.example.test/admin/playlist"
+    },
+    "kind": "signage.public_sensitive_path",
+    "severity": "high",
+    "summary": "Public signage URL exposes an admin, player, or playlist-style path."
+  },
+  {
+    "evidence": {
+      "url": "https://signage.example.test/admin/playlist"
+    },
+    "kind": "signage.public_playlist",
+    "severity": "medium",
+    "summary": "Playlist content appears publicly accessible."
+  },
+  {
+    "evidence": {
+      "remote_debugging": true
+    },
+    "kind": "kiosk.remote_debugging",
+    "severity": "high",
+    "summary": "Remote debugging is enabled."
+  },
+  {
+    "evidence": {
+      "default_password": true
+    },
+    "kind": "kiosk.default_password",
+    "severity": "critical",
+    "summary": "Kiosk configuration uses a default password."
+  },
+  {
+    "evidence": {
+      "usb_enabled": true
+    },
+    "kind": "kiosk.usb_enabled",
+    "severity": "medium",
+    "summary": "USB access is enabled and should be verified."
+  },
+  {
+    "evidence": {
+      "auto_update_disabled": true
+    },
+    "kind": "kiosk.auto_update_disabled",
+    "severity": "medium",
+    "summary": "Automatic browser or OS updates are disabled."
+  },
+  {
+    "evidence": {},
+    "kind": "headers.csp_missing",
+    "severity": "high",
+    "summary": "Content-Security-Policy header is missing."
+  },
+  {
+    "evidence": {},
+    "kind": "headers.clickjacking_unprotected",
+    "severity": "high",
+    "summary": "No iframe/clickjacking protection is configured."
+  },
+  {
+    "evidence": {
+      "chrome_major": 96,
+      "minimum": 120
+    },
+    "kind": "browser.outdated",
+    "severity": "high",
+    "summary": "Kiosk browser version is below the configured minimum."
+  }
+]

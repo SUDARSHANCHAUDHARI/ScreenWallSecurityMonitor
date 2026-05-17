@@ -1,0 +1,9 @@
+{
+  "by_severity": {
+    "critical": 1,
+    "high": 5,
+    "medium": 3
+  },
+  "findings": 9,
+  "risk_score": 100
+}

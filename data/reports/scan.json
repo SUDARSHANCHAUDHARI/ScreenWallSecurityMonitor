@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "Server": "nginx"
+  },
+  "kiosk_config": {
+    "auto_update_disabled": true,
+    "default_password": true,
+    "remote_debugging": true,
+    "usb_enabled": true
+  },
+  "playlist_public": true,
+  "public": true,
+  "url": "https://signage.example.test/admin/playlist",
+  "user_agent": "Mozilla/5.0 Chrome/96.0.4664.45"
+}
