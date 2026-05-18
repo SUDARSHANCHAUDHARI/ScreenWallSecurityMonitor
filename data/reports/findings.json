@@ -1,63 +1,12 @@
 [
   {
     "evidence": {
-      "url": "https://signage.example.test/admin/playlist"
-    },
-    "kind": "signage.public_sensitive_path",
-    "severity": "high",
-    "summary": "Public signage URL exposes an admin, player, or playlist-style path."
-  },
-  {
-    "evidence": {
-      "url": "https://signage.example.test/admin/playlist"
-    },
-    "kind": "signage.public_playlist",
-    "severity": "medium",
-    "summary": "Playlist content appears publicly accessible."
-  },
-  {
-    "evidence": {
-      "remote_debugging": true
-    },
-    "kind": "kiosk.remote_debugging",
-    "severity": "high",
-    "summary": "Remote debugging is enabled."
-  },
-  {
-    "evidence": {
       "default_password": true
     },
     "kind": "kiosk.default_password",
+    "recommended_action": "Rotate default credentials and enforce unique device passwords.",
     "severity": "critical",
     "summary": "Kiosk configuration uses a default password."
-  },
-  {
-    "evidence": {
-      "usb_enabled": true
-    },
-    "kind": "kiosk.usb_enabled",
-    "severity": "medium",
-    "summary": "USB access is enabled and should be verified."
-  },
-  {
-    "evidence": {
-      "auto_update_disabled": true
-    },
-    "kind": "kiosk.auto_update_disabled",
-    "severity": "medium",
-    "summary": "Automatic browser or OS updates are disabled."
-  },
-  {
-    "evidence": {},
-    "kind": "headers.csp_missing",
-    "severity": "high",
-    "summary": "Content-Security-Policy header is missing."
-  },
-  {
-    "evidence": {},
-    "kind": "headers.clickjacking_unprotected",
-    "severity": "high",
-    "summary": "No iframe/clickjacking protection is configured."
   },
   {
     "evidence": {
@@ -65,7 +14,67 @@
       "minimum": 120
     },
     "kind": "browser.outdated",
+    "recommended_action": "Upgrade the kiosk browser to a supported version.",
     "severity": "high",
     "summary": "Kiosk browser version is below the configured minimum."
+  },
+  {
+    "evidence": {},
+    "kind": "headers.clickjacking_unprotected",
+    "recommended_action": "Configure frame-ancestors or X-Frame-Options for embed control.",
+    "severity": "high",
+    "summary": "No iframe/clickjacking protection is configured."
+  },
+  {
+    "evidence": {},
+    "kind": "headers.csp_missing",
+    "recommended_action": "Add a Content-Security-Policy header with frame and source restrictions.",
+    "severity": "high",
+    "summary": "Content-Security-Policy header is missing."
+  },
+  {
+    "evidence": {
+      "remote_debugging": true
+    },
+    "kind": "kiosk.remote_debugging",
+    "recommended_action": "Disable remote debugging outside controlled maintenance windows.",
+    "severity": "high",
+    "summary": "Remote debugging is enabled."
+  },
+  {
+    "evidence": {
+      "url": "https://signage.example.test/admin/playlist"
+    },
+    "kind": "signage.public_sensitive_path",
+    "recommended_action": "Restrict public access to dashboard, player, and playlist paths with authentication and network controls.",
+    "severity": "high",
+    "summary": "Public signage URL exposes an admin, player, or playlist-style path."
+  },
+  {
+    "evidence": {
+      "auto_update_disabled": true
+    },
+    "kind": "kiosk.auto_update_disabled",
+    "recommended_action": "Enable managed browser and OS updates or document a patch window.",
+    "severity": "medium",
+    "summary": "Automatic browser or OS updates are disabled."
+  },
+  {
+    "evidence": {
+      "usb_enabled": true
+    },
+    "kind": "kiosk.usb_enabled",
+    "recommended_action": "Disable or physically control USB access on unattended signage devices.",
+    "severity": "medium",
+    "summary": "USB access is enabled and should be verified."
+  },
+  {
+    "evidence": {
+      "url": "https://signage.example.test/admin/playlist"
+    },
+    "kind": "signage.public_playlist",
+    "recommended_action": "Move playlist manifests behind authenticated delivery or signed URLs.",
+    "severity": "medium",
+    "summary": "Playlist content appears publicly accessible."
   }
 ]

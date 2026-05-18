@@ -1,17 +1,17 @@
 # ScreenWall Security Monitor
 
-[![Python](https://img.shields.io/badge/Python-3.12-blue)](#) [![Status](https://img.shields.io/badge/status-MVP-green)](#) [![Security](https://img.shields.io/badge/security-defensive%20lab-purple)](#)
+[![Python](https://img.shields.io/badge/Python-3.12-blue)](#) [![Status](https://img.shields.io/badge/status-product%20polish-green)](#) [![Security](https://img.shields.io/badge/security-defensive%20lab-purple)](#)
 
 Security auditing MVP for signage URLs, kiosk configurations, public playlists, CSP, and browser risks.
 
 - **Portfolio group:** Product-style SaaS project
-- **Status:** MVP implemented, tested, committed, and pushed to GitHub
+- **Status:** Product polish implemented, tested, committed, and pushed to GitHub
 - **GitHub:** https://github.com/SUDARSHANCHAUDHARI/ScreenWallSecurityMonitor
 - **Local path:** `/Users/screencloudsudarshan/SUDARSHAN_CODE/sudarshan_repos/CyberSecurity/ScreenWallSecurityMonitor`
 
 ## MVP Snapshot
 
-This repository includes a working MVP with safe sample data, deterministic detection or analysis logic, local tests, and generated output reports where relevant. It is ready for README/demo polish or deeper product work.
+This repository includes a working MVP with safe signage scan fixtures, deterministic risk checks, JSON outputs, Markdown security report, triage checklist, tests, and Docker demo support.
 
 ## Safe Use
 
@@ -25,6 +25,8 @@ This project is defensive and analysis-focused. Use only with logs, systems, rep
 - outdated browser warning
 - CSP/embed check
 - report export
+- risk level and severity breakdown
+- remediation checklist
 
 ## Suggested Stack
 
@@ -48,18 +50,33 @@ Run tests:
 python3 -m unittest discover -s tests -p 'test_*.py'
 ```
 
-## MVP Capabilities
+Generated outputs:
+
+- `data/reports/scan.json`
+- `data/reports/findings.json`
+- `data/reports/summary.json`
+- `data/reports/report.md`
+- `data/reports/triage.md`
+
+## Docker Demo
+
+```bash
+docker compose run --rm api
+```
+
+## Product Polish Capabilities
 
 - Detects public signage dashboard, player, or playlist-style URLs.
 - Checks weak kiosk configuration flags.
 - Checks CSP and iframe/clickjacking protection.
 - Warns on outdated Chrome kiosk browsers.
 - Generates JSON scan data, JSON findings, JSON summary, and a Markdown report.
+- Adds recommended actions and a remediation checklist for signage operators.
 
 ## Roadmap
 
-- Polish sample output screenshots or terminal demos
-- Add architecture diagram and deeper implementation notes
-- Expand test coverage around edge cases
-- Add Docker or local demo workflow where useful
-- Prepare `v0.1.0-mvp` release notes
+- Add authenticated scan profiles for owned signage deployments
+- Add browser/user-agent inventory comparison
+- Add scheduled monitoring and drift alerts
+- Add web dashboard for risk summaries
+- Add export formats for customer-ready audits

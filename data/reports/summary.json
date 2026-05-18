@@ -1,9 +1,24 @@
 {
+  "by_category": {
+    "browser": 1,
+    "headers": 2,
+    "kiosk": 4,
+    "signage": 2
+  },
   "by_severity": {
     "critical": 1,
     "high": 5,
     "medium": 3
   },
   "findings": 9,
-  "risk_score": 100
+  "risk_level": "high",
+  "risk_score": 100,
+  "top_priority": {
+    "evidence": {
+      "url": "https://signage.example.test/admin/playlist"
+    },
+    "kind": "signage.public_sensitive_path",
+    "severity": "high",
+    "summary": "Public signage URL exposes an admin, player, or playlist-style path."
+  }
 }
