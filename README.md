@@ -1,75 +1,92 @@
 # ScreenWall Security Monitor
 
-[![Python](https://img.shields.io/badge/Python-3.12-blue)](#) [![Status](https://img.shields.io/badge/status-product%20polish-green)](#) [![Security](https://img.shields.io/badge/security-defensive%20lab-purple)](#)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](#requirements)
+[![Status](https://img.shields.io/badge/status-MVP-green)](#status)
+[![Security](https://img.shields.io/badge/security-defensive%20lab-purple)](#safe-use)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Security auditing MVP for signage URLs, kiosk configurations, public playlists, CSP, and browser risks.
+Security auditing tool for digital signage and kiosk fleets. Audits signage URLs, kiosk configurations, public playlists, CSP, and browser-version risks across a fleet of unattended screens.
 
-- **Portfolio group:** Product-style SaaS project
-- **Status:** Product polish implemented, tested, committed, and pushed to GitHub
-- **GitHub:** https://github.com/SUDARSHANCHAUDHARI/ScreenWallSecurityMonitor
-- **Local path:** `/Users/screencloudsudarshan/SUDARSHAN_CODE/sudarshan_repos/CyberSecurity/ScreenWallSecurityMonitor`
+---
 
-## MVP Snapshot
+## Overview
 
-This repository includes a working MVP with safe signage scan fixtures, deterministic risk checks, JSON outputs, Markdown security report, triage checklist, tests, and Docker demo support.
+ScreenWall Security Monitor is a defensive analysis tool built for operators of digital signage and kiosk fleets (the kind of devices unattended in lobbies, retail, and public spaces). It scans configured signage URLs and kiosk configs to flag insecure URLs, missing security headers, outdated browser versions, and exposed admin interfaces. Outputs include findings, risk-scored summary, Markdown report, and a triage handoff for fleet operators.
 
-## Safe Use
+The current MVP is a Python CLI. A FastAPI + React fleet dashboard is scaffolded under `apps/` for future development.
 
-This project is defensive and analysis-focused. Use only with logs, systems, repositories, and lab environments you own or have permission to assess.
+## Features
 
-## Core Features
+- Audits signage URLs for HTTPS, certificate validity, and security headers
+- Checks Content-Security-Policy on each URL
+- Detects outdated browser versions on devices
+- Flags exposed admin paths and debug endpoints
+- Scores risk per URL and per device
+- Outputs JSON findings, risk summary, Markdown report, and triage handoff
 
-- exposed dashboard detection
-- public playlist check
-- weak kiosk config checklist
-- outdated browser warning
-- CSP/embed check
-- report export
-- risk level and severity breakdown
-- remediation checklist
+## Requirements
 
-## Suggested Stack
+- Python 3.10 or newer
+- Linux, macOS, or Windows
+- No third-party Python packages (standard library only)
+- Optional: Docker for the demo container
+- Network access for live URL audits (fixture mode works offline)
 
-FastAPI, React, Docker.
-
-## Status
-
-Working CLI MVP.
-
-
-## Install
+## Installation
 
 ```bash
+git clone https://github.com/SUDARSHANCHAUDHARI/ScreenWallSecurityMonitor.git
+cd ScreenWallSecurityMonitor
 pip install .
 ```
 
-This registers the `screenwall-monitor` command. Or run directly:
+This registers the `screenwall-monitor` CLI command.
+
+To run without installing:
 
 ```bash
 python3 main.py --help
 ```
 
-## Quick Start
+## Usage
 
-Analyze the included signage scan fixture:
+Audit the included fixture fleet:
 
 ```bash
-python3 -m apps.api.app.cli --fixture data/samples/signage-scan.json --out-dir data/reports
+python3 main.py --fixture data/samples/fleet-fixture.json --out-dir data/reports
 ```
 
-Run tests:
+Generated outputs in `data/reports/`:
+
+- `findings.json` — per-URL / per-device findings
+- `summary.json` — risk score and severity breakdown
+- `report.md` — Markdown fleet audit report
+- `triage.md` — operator triage checklist
+
+## Project Structure
+
+```
+ScreenWallSecurityMonitor/
+├── apps/
+│   ├── api/        FastAPI app scaffold (planned)
+│   └── web/        React/Next.js fleet dashboard scaffold (planned)
+├── data/
+│   ├── samples/    Safe sample fleet fixtures
+│   └── reports/    Example generated output
+├── docker/         Dockerfile + compose support
+├── docs/           Architecture, security notes, demo
+├── scripts/        Setup, seed, run helpers
+├── tests/          Unit and integration tests
+├── main.py         CLI entrypoint
+├── pyproject.toml  Package metadata
+└── LICENSE
+```
+
+## Testing
 
 ```bash
 python3 -m unittest discover -s tests -p 'test_*.py'
 ```
-
-Generated outputs:
-
-- `data/reports/scan.json`
-- `data/reports/findings.json`
-- `data/reports/summary.json`
-- `data/reports/report.md`
-- `data/reports/triage.md`
 
 ## Docker Demo
 
@@ -77,19 +94,29 @@ Generated outputs:
 docker compose run --rm api
 ```
 
-## Product Polish Capabilities
+## Safe Use
 
-- Detects public signage dashboard, player, or playlist-style URLs.
-- Checks weak kiosk configuration flags.
-- Checks CSP and iframe/clickjacking protection.
-- Warns on outdated Chrome kiosk browsers.
-- Generates JSON scan data, JSON findings, JSON summary, and a Markdown report.
-- Adds recommended actions and a remediation checklist for signage operators.
+This project is defensive and analysis-focused. Use only on signage URLs, kiosks, and fleets you own or have explicit written permission to audit.
+
+## Status
+
+Working Python CLI MVP. Web dashboard scaffold present but not yet implemented.
 
 ## Roadmap
 
-- Add authenticated scan profiles for owned signage deployments
-- Add browser/user-agent inventory comparison
-- Add scheduled monitoring and drift alerts
-- Add web dashboard for risk summaries
-- Add export formats for customer-ready audits
+- Live ingestion from common digital signage platforms
+- Per-device browser version checks via remote agent
+- Scheduled fleet-wide scans with diff alerts
+- Web dashboard for fleet visualization
+- GitHub release `v0.1.0-mvp`
+
+## License
+
+Released under the [MIT License](LICENSE). You are free to use, modify, and distribute this software with attribution.
+
+## Author
+
+**Sudarshan Chaudhari** — [SudarshanTechLabs](https://github.com/SUDARSHANCHAUDHARI)
+Bangkok, Thailand
+
+For inquiries: open an issue on [GitHub](https://github.com/SUDARSHANCHAUDHARI/ScreenWallSecurityMonitor/issues).
